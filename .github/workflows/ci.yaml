@@ -38,3 +38,4 @@ jobs:
     with:
       charts_dir: 'charts'
       helm_extra_sets: '--set image.tag=sha-${{ needs.build-image.outputs.sha_tag }}'
+      ct_extra_args: '--all'
