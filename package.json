@@ -11,7 +11,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "test": "jest --coverage --testPathPattern='test/.*\\.spec\\.ts'",
+    "test": "jest --coverage",
     "lint": "eslint --ext .ts src/ && prettier --check .",
     "lint:fix": "eslint --ext .ts src/ --fix && prettier --write ."
   },
