@@ -4,11 +4,11 @@ on:
     branches:
       - main
     paths:
-      - "helm/**"
-      - ".github/workflows/release.yml"
+      - 'helm/**'
+      - '.github/workflows/release.yml'
 jobs:
   Release:
     name: 'Helm'
     uses: curium-rocks/flows/.github/workflows/helm-release.yml@main
     with:
-        charts_dir: charts
+      charts_dir: charts
