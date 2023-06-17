@@ -9,6 +9,10 @@ jobs:
     validate-node:
         name: 'Validate'
         uses: curium-rocks/flows/.github/workflows/node-ts.yml@main
+        permissions:
+            contents: read
+            actions: read
+            security-events: write
         with:
           continue-on-prod-vulns: false
           node_versions: '{"node-version": ["16.x","18.x","20.x"]}'
