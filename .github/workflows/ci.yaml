@@ -18,7 +18,7 @@ jobs:
           node_versions: '{"node-version": ["16.x","18.x","20.x"]}'
         secrets:
           SONARQUBE_KEY: ${{ secrets.SONARQUBE_KEY }}
-    build-container:
+    build-image:
         name: 'Build container image'
         uses: curium-rocks/flows/.github/workflows/oci-build-image.yml@main
         needs: validate-node
@@ -32,6 +32,7 @@ jobs:
             image_name: nestjs-starter
             push_in_pr: false
     deploy-container:
+        needs: build-image
         name: 'Helm'
         uses: curium-rocks/flows/.github/workflows/helm-qa.yml@main
         with:
