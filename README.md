@@ -28,3 +28,7 @@
 | helm:uninstall     | Delete the chart release from your cluster                          |
 | helm:test          | Run the packaged tests (postman) for the helm release               |
 | test               | Run the unit tests                                                  |
+
+## How to use published chart
+
+First add the repo `helm repo add nestjs-starter  https://bryopsida.github.io/nestjs-starter/`, then fetch updates `helm repo update`, and finally, install with `helm upgrade --install starter nestjs-starter/nestjs-starter --wait`.
