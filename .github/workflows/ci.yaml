@@ -37,5 +37,5 @@ jobs:
     uses: curium-rocks/flows/.github/workflows/helm-qa.yml@main
     with:
       charts_dir: 'charts'
-      helm_extra_sets: '--set image.tag=sha-${{ needs.build-image.outputs.sha_tag }}'
+      helm_extra_sets: '--set image.tag=sha-${{ needs.build-image.outputs.build_tag }}'
       ct_extra_args: '--all'
