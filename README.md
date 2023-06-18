@@ -26,4 +26,5 @@
 | lint:fix           | Automatically fix any formatting or linting rules that can be fixed |
 | helm:deploy        | Deploy the chart with the local to your cluster                     |
 | helm:uninstall     | Delete the chart release from your cluster                          |
+| helm:test          | Run the packaged tests (postman) for the helm release               |
 | test               | Run the unit tests                                                  |

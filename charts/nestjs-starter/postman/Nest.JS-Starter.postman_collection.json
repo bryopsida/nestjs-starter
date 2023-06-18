@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "c4d4f87c-e6f9-41e0-80d2-ff869d06f391",
+		"name": "Nest.JS Starter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "227389"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"pm.test(\"Response status code is 200\", function() {",
+							"    pm.expect(pm.response.code).to.be.eq(200)",
+							"});",
+							"",
+							"pm.test(\"Response body is ok\", function() {",
+							"    var responseData = pm.response.json()",
+							"    pm.expect(responseData.status).to.eq(\"ok\")",
+							"    pm.expect(pm.response.body)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/health",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swagger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"pm.test(\"Response status code is 200\", function() {",
+							"    pm.expect(pm.response.code).to.be.eq(200)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/api-json",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api-json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

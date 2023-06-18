@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-postman-configmap
+  annotations:
+    "helm.sh/hook": test-success
+data:
+{{ (.Files.Glob "postman/*").AsConfig | indent 2 }}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "nestjs-starter.fullname" . }}-postman-test"
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  restartPolicy: Never
+  containers:
+    - name: test-runner
+      image: postman/newman:latest
+      volumeMounts:
+        - name: collection-volume
+          mountPath: /postman/
+      args:
+        - run
+        - "/postman/Nest.JS-Starter.postman_collection.json"
+        - --env-var
+        - 'server_url=http://{{ include "nestjs-starter.fullname" . }}.{{ .Release.Namespace }}.svc:{{ .Values.service.port }}'
+  volumes:
+    - name: collection-volume
+      configMap:
+        name: {{ .Release.Name }}-postman-configmap

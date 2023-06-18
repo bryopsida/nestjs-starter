@@ -15,12 +15,14 @@
     "minikube:copyImage": "minikube image load ghcr.io/bryopsida/nestjs-starter:local",
     "helm:template": "helm template nestjs-starter ./charts/nestjs-starter/",
     "helm:deploy": "helm upgrade --install nestjs-starter ./charts/nestjs-starter/ --set image.tag=local --set image.pullPolicy=IfNotPresent --debug --wait",
+    "helm:test": "helm test nestjs-starter",
     "helm:uninstall": "helm del nestjs-starter",
     "start": "nest start",
     "start:dev": "nest start --watch | pino-pretty",
     "test": "jest --coverage",
     "lint": "eslint --ext .ts src/ && prettier --check .",
-    "lint:fix": "eslint --ext .ts src/ --fix && prettier --write ."
+    "lint:fix": "eslint --ext .ts src/ --fix && prettier --write .",
+    "postman": "newman run './charts/nestjs-starter/postman/Nest.JS-Starter.postman_collection.json' -e './charts/nestjs-starter/postman/Nest.JS-Starter.postman_environment.json'"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -50,6 +52,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard": "^17.1.0",
     "jest": "29.5.0",
+    "newman": "^5.3.2",
     "pino-pretty": "^10.0.0",
     "prettier": "^2.8.8",
     "source-map-support": "^0.5.20",
